@@ -1,7 +1,7 @@
-import { IPlayer } from "./player-entity";
+import { IPlayer } from "./player";
 
-export interface IStiker {
+export interface ISticker {
     _id?: string,
-    player: IPlayer,
+    player: IPlayer | string,
     legend: boolean,
 }

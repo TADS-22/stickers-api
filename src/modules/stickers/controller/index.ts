@@ -1,0 +1,1 @@
+export * as stickerController from './sticker-controller'
