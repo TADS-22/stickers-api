@@ -1,14 +1,9 @@
 import { model, Schema } from "mongoose";
-
-export interface IStiker {
-    _id?: string,
-    player: string,
-    legend: boolean,
-}
+import { IStiker } from "../../../domain";
 
 const stickerSchema = new Schema<IStiker>({
-    player: { type: String },
+    player: { type: Schema.Types.ObjectId, ref: 'player' },
     legend: { type: Boolean },
 })
 
-export const Contact = model<IStiker>('sticker', stickerSchema)
+export const Sticker = model<IStiker>('sticker', stickerSchema)

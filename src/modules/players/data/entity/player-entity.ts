@@ -1,14 +1,5 @@
 import { model, Schema } from "mongoose";
-
-export interface IPlayer {
-    _id?: string,
-    name: string,
-    country: string,
-    position: string,
-    height: number,
-    weight: number,
-    jersey: number,
-}
+import { IPlayer } from "../../../domain";
 
 const playerSchema = new Schema<IPlayer>({
     name: { type: String },
@@ -19,4 +10,4 @@ const playerSchema = new Schema<IPlayer>({
     jersey: { type: Number},
 })
 
-export const Contact = model<IPlayer>('player', playerSchema)
+export const Player = model<IPlayer>('player', playerSchema)
