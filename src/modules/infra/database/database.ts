@@ -2,7 +2,10 @@ import mongoose, { Mongoose } from "mongoose";
 import { apiLogger } from "../../commons/logger";
 import { DatabaseError, DatabaseErrorCodes } from "../../commons/errors";
 
-const connect = async (): Promise<Mongoose> => { 
+import '../../players/data/entity'
+import '../../stickers/data/entity'
+
+export const connect = async (): Promise<Mongoose> => { 
     try {
         const con = await mongoose.connect("mongodb://localhost:27017/db-stickers")
         return con    
@@ -17,8 +20,4 @@ const connect = async (): Promise<Mongoose> => {
         throw new DatabaseError("Error connecting to database", 
             DatabaseErrorCodes.CONNECTION)
     }
-}
-
-export default { 
-    connect
 }

@@ -11,6 +11,7 @@ export const findById = async (req: Request, res: Response) => {
         res.json(result)
     } else {
         res.status(StatusCodes.NOT_FOUND)
+        res.end()
     }
 }
 
@@ -19,4 +20,5 @@ export const save = async (req: Request, res: Response) => {
     await createStickerUseCase.execute(data)
     
     res.status(StatusCodes.CREATED)
+    res.end()
 }

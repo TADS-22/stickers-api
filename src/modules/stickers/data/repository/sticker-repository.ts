@@ -1,15 +1,15 @@
 import { DatabaseError, DatabaseErrorCodes } from '../../../commons/errors'
 import { apiLogger } from '../../../commons/logger'
 import { ISticker } from '../../../domain'
-import database from '../../../infra/database/database'
-import { Sticker } from '../entity/sticker-entity'
+import { database } from '../../../infra/database'
+import { Sticker } from '../entity'
 
 export const findById = async (id: string): Promise<ISticker | null> => {
     try {
         const con = await database.connect()
         const result = await Sticker
             .findById(id)
-            .populate('player')
+            .populate("player")
             .exec();
 
         con.disconnect()
@@ -31,7 +31,7 @@ export const save = async (data: ISticker): Promise<void> => {
     try {
         const con = await database.connect()
         const sticker = new Sticker(data)
-        
+
         await sticker.save()
         con.disconnect()
     } catch (error: Error | any) {
