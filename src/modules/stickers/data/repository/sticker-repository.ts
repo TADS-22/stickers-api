@@ -15,7 +15,7 @@ export const findById = async (id: string): Promise<ISticker | null> => {
         con.disconnect()
         return result
     } catch (error: Error | any) {
-        apiLogger.error("Error finding contact by id", {
+        apiLogger.error("Error finding sticker by id", {
             local: 'sticker-repository',
             method: 'findById',
             code: DatabaseErrorCodes.FIND,
@@ -35,7 +35,7 @@ export const save = async (data: ISticker): Promise<void> => {
         await sticker.save()
         con.disconnect()
     } catch (error: Error | any) {
-        apiLogger.error("Error finding contact by id", {
+        apiLogger.error("Error creating sticker", {
             local: 'sticker-repository',
             method: 'save',
             code: DatabaseErrorCodes.SAVE,
